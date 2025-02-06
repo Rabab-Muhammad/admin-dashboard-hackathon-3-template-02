@@ -250,8 +250,7 @@ interface Order {
   orderDate: string;
   status: string | null;
   products: {
-    name: string;
-    image: string;
+    name: string; image: string;
   }[];
 }
 
@@ -270,10 +269,7 @@ export default function AdminDashboard() {
         }`
       )
       .then((data) => setOrders(data))
-      .catch(() => {
-        console.log("Error fetching orders");
-        Swal.fire("Error", "Failed to load orders", "error"); // Optional: Display a SweetAlert error
-      });
+      .catch(() => console.log("Error fetching orders"));
   }, []);
 
   // ✅ Filter Orders
@@ -307,7 +303,7 @@ export default function AdminDashboard() {
         prevOrders.filter((order) => order._id !== orderId)
       );
       Swal.fire("Deleted!", "The order has been deleted.", "success");
-    } catch (error) {
+    } catch {
       Swal.fire("Error", "Failed to delete order", "error");
     }
   };
@@ -328,7 +324,7 @@ export default function AdminDashboard() {
         `Order has been marked as ${newStatus}.`,
         "success"
       );
-    } catch (error) {
+    } catch {
       Swal.fire("Error", "Failed to update status", "error");
     }
   };
@@ -448,6 +444,7 @@ export default function AdminDashboard() {
                               </li>
                             ))}
                           </ul> */}
+
                         </td>
                       </tr>
                     )}
