@@ -19,7 +19,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, ReactNode } from "react";
 
-interface ProtectedRouteProps {
+export interface ProtectedRouteProps {
   children: ReactNode;
 }
 
