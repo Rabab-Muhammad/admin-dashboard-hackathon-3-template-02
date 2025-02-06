@@ -1,16 +1,38 @@
-"use client"
+// "use client"
+// import { useRouter } from "next/navigation";
+// import { useEffect } from "react";
+
+// export default function ProtectedRoute({children}:{children:React.ReactNode}){
+//     const router = useRouter()
+
+//     useEffect(()=>{
+//         const isLoggegIn = localStorage.getItem("isLoggedIn")
+//         if(!isLoggegIn){
+//             router.push("/admin/dashboard")
+//         }
+//     },[router])
+
+//     return <>{children}</>
+// }
+
+"use client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { ReactNode } from "react";
 
-export default function ProtectedRoute({children}:{children:React.ReactNode}){
-    const router = useRouter()
+interface ProtectedRouteProps {
+  children: ReactNode;
+}
 
-    useEffect(()=>{
-        const isLoggegIn = localStorage.getItem("isLoggedIn")
-        if(!isLoggegIn){
-            router.push("/admin/dashboard")
-        }
-    },[router])
+export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+  const router = useRouter();
 
-    return <>{children}</>
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (!isLoggedIn) {
+      router.push("/admin/dashboard");
+    }
+  }, [router]);
+
+  return <>{children}</>;
 }
