@@ -17,14 +17,15 @@
 
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { ReactNode } from "react";
+import { useEffect, ReactNode } from "react";
 
+// Define props interface
 interface ProtectedRouteProps {
   children: ReactNode;
 }
 
-export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+// Correct function component export with explicit typing
+const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -35,4 +36,6 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   }, [router]);
 
   return <>{children}</>;
-}
+};
+
+export default ProtectedRoute;
