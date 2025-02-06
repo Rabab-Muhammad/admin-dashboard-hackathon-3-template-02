@@ -270,8 +270,8 @@ export default function AdminDashboard() {
         }`
       )
       .then((data) => setOrders(data))
-      .catch((error) => {
-        console.log("Error fetching orders:", error);
+      .catch(() => {
+        console.log("Error fetching orders");
         Swal.fire("Error", "Failed to load orders", "error"); // Optional: Display a SweetAlert error
       });
   }, []);
