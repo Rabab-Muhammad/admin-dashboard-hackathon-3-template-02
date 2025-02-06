@@ -19,12 +19,10 @@
 import { useRouter } from "next/navigation";
 import { useEffect, ReactNode } from "react";
 
-// Define props interface
 interface ProtectedRouteProps {
   children: ReactNode;
 }
 
-// Correct function component export with explicit typing
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const router = useRouter();
 
